@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Backend\CompanyController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,11 +19,20 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('auth.login');
 });
-Route::get('/dashboard', function () {
-    return view('layouts.backend.masterbackend');
-});
+
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
+
+Route::middleware('auth')->group(function () {
+    //company resource route
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('company', [App\Http\Controllers\Backend\CompanyController::class, 'index']);
+    Route::get('/company/create', [App\Http\Controllers\Backend\CompanyController::class, 'create']);
+
+    Route::get('/dashboard', function () {
+        return view('layouts.backend.masterbackend');
+    });
+});
