@@ -10,7 +10,7 @@
     <!-- /.card-header -->
     <div class="card-body">
         <div class=" p-1 d-flex justify-content-end">
-            <a href="{{route('company.create')}}" class="btn btn-primary ">Add Company</a>
+            <a href="{{url('/company/create')}}" class="btn btn-primary ">Add Company</a>
         </div>
         <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
             <div class="row">

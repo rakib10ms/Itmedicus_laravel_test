@@ -27,12 +27,12 @@ Auth::routes();
 
 
 Route::middleware('auth')->group(function () {
+    // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
     //company resource route
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('company', [App\Http\Controllers\Backend\CompanyController::class, 'index']);
-    Route::get('/company/create', [App\Http\Controllers\Backend\CompanyController::class, 'create']);
+    Route::resource('company', CompanyController::class);
 
     Route::get('/dashboard', function () {
-        return view('layouts.backend.masterbackend');
+        return view('layouts.backend.dashboard');
     });
 });
