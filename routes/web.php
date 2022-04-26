@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Backend\CompanyController;
+use App\Http\Controllers\Backend\EmployeeController;
 
 
 /*
@@ -31,6 +32,8 @@ Route::middleware('auth')->group(function () {
 
     //company resource route
     Route::resource('company', CompanyController::class);
+    //employee resource route
+      Route::resource('employee', EmployeeController::class);
 
     Route::get('/dashboard', function () {
         return view('layouts.backend.dashboard');

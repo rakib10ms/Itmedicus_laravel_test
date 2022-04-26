@@ -5,7 +5,7 @@
 
 <div class="card">
     <div class="card-header">
-        <h2 class="">All Company List</h2>
+        <h2 class="">All Employee List</h2>
     </div>
     @if ( Session::has('success') )
 
@@ -23,7 +23,7 @@
     <!-- /.card-header -->
     <div class="card-body">
         <div class=" p-1 d-flex justify-content-end">
-            <a href="{{url('/company/create')}}" class="btn btn-primary ">Add Company</a>
+            <a href="{{url('/employee/create')}}" class="btn btn-primary ">Add Employee</a>
         </div>
         <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
             <div class="row">
@@ -42,28 +42,27 @@
                     <table id="example1" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
                         <thead>
                             <tr role="row">
-                                <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Name</th>
-                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Email</th>
-                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Website)</th>
-                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Image</th>
-                                <!-- <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">CSS grade</th> -->
+                                <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">First Name</th>
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Last Name</th>
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Company</th>
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Email</th>
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Phone</th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($companies as $company)
+                            @forelse ($employees as $employee)
                             <tr class="odd">
-                                <td>{{ $company->name}}</td>
-                                <td>{{ $company->email}}</td>
-                                <td>{{ $company->website}}</td>
-                                <td>
+                                <td>{{ $employee->first_name}}</td>
+                                <td>{{ $employee->last_name}}</td>
+                                <td>{{ $employee->company_name}}</td>
+                                <td>{{ $employee->email}}</td>
+                                <td>{{ $employee->phone}}</td>
 
-                                    <img src="{{ url('storage/'.$company->logo) }}" style="width:100px;height:50px;" alt="asd" />
-                                </td>
                                 <td>
-                                    <a href="{{route('company.edit',$company->id)}}"> <i class="fa fa-edit"> </i> </a>
+                                    <a href="{{route('employee.edit',$employee->id)}}"> <i class="fa fa-edit"> </i> </a>
 
-                                    <a href="{{ $company->id}}" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-trash mx-1"> </i></a>
+                                    <a href="{{ $employee->id}}" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-trash mx-1"> </i></a>
 
 
                                     <!-- Modal -->
@@ -78,9 +77,9 @@
                                                 </div>
 
                                                 <div class="modal-footer">
-                                                    <form action="{{route('company.destroy',$company->id)}} " method="POST">
+                                                    <form action="{{route('employee.destroy',$employee->id)}} " method="POST">
                                                         @method('DELETE')
-                                                       @csrf
+                                                        @csrf
                                                         <button type="submit" class="btn btn-danger">Delete</button>
                                                     </form>
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -93,12 +92,12 @@
 
                             @empty
 
-                            <h1 class="text-primary text-center m-2">No posts found!!</h1>
+                            <h1 class="text-primary text-center m-2">No Employees found!!</h1>
                             @endforelse
 
 
                         </tbody>
-                 
+
                     </table>
                 </div>
             </div>
@@ -125,5 +124,11 @@
     </div>
     <!-- /.card-body -->
 </div>
-
+    <script src="//cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+    <script>
+        $(function () {
+            $("#example1").DataTable();
+        });
+    </script>
 @endsection
+

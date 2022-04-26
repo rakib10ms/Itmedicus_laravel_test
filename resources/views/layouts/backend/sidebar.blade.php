@@ -70,9 +70,9 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{url('company/create')}}" class="nav-link">
+                                    <a href="{{url('/employee')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Top Navigation + Sidebar</p>
+                                        <p>Employees</p>
                                     </a>
                                 </li>
                             
