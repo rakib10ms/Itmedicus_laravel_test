@@ -2,5 +2,5 @@
 
 @section('content')
 
-<h1> Hello Check </h1>
+<h1 class="display-5">Welcome <span class="text-primary"> {{Auth::user()->name}} ! </span></h1>
 @endsection

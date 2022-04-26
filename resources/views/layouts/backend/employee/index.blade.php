@@ -39,7 +39,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    <table id="example1" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
+                    <table id="tabledata" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
                         <thead>
                             <tr role="row">
                                 <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">First Name</th>
@@ -124,11 +124,23 @@
     </div>
     <!-- /.card-body -->
 </div>
-    <script src="//cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
-    <script>
-        $(function () {
-            $("#example1").DataTable();
-        });
+<script type="text/javascript">
+     $(document).ready(function () {
+         $("#tabledata").dataTable({
+             "aoColumnDefs": [{ 'bSortable': false, 'aTargets': [3] }],
+             "bSort": true,
+             "scrollY": 100,
+             "scrollX": true,
+             dom: 'Blfrtip',
+             lengthMenu: [
+                 [10, 25, 50, -1],
+                 ['10 rows', '25 rows', '50 rows', 'Show all']
+             ],
+             buttons: [
+                 'excelHtml5'
+             ]
+         });
+     });
     </script>
 @endsection
 

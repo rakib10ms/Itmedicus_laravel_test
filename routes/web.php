@@ -35,7 +35,8 @@ Route::middleware('auth')->group(function () {
     //employee resource route
       Route::resource('employee', EmployeeController::class);
 
-    Route::get('/dashboard', function () {
+      Route::get('/dashboard', function () {
         return view('layouts.backend.dashboard');
-    });
+    }); 
+ 
 });
